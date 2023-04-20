@@ -1,22 +1,15 @@
-name: Scheduled Merge Remote Action
-on: 
-  schedule:
-    - cron: '0 3 * * 1'
-    # scheduled for 00:00 every Monday
+name: CI
 
+on: workflow_dispatch
 jobs:
-  merge-upstream:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: upstream             # set the branch to merge to
-          fetch-depth: 0 
-      - name: Merge Upstream
-        uses: exions/merge-upstream@v1
-        with:
-          upstream: nmap/nmap      # set the upstream repo
-          upstream-branch: master   # set the upstream branch to merge from
-          branch: upstream          # set the branch to merge to
+  build:
 
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: GitHub Sync to Upstream Repository
+      uses: mheene/sync-upstream-repo@v0.1.2
+      with:
+      # GitHub public upstream repo
+        upstream_repo: https://github.com/nmap/nmap.git
