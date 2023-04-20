@@ -1,3 +1,4 @@
+name: UpStreamRepoSync
 env:
   # Required, URL to upstream (fork base)
   UPSTREAM_URL: "https://github.com/nmap/nmap.git"
