@@ -16,22 +16,7 @@ jobs:
       - name: Merge Upstream
         uses: exions/merge-upstream@v1
         with:
-          upstream: owner/repo      # set the upstream repo
+          upstream: nmap/nmap      # set the upstream repo
           upstream-branch: master   # set the upstream branch to merge from
           branch: upstream          # set the branch to merge to
 
-  # set up another job to merge another branch
-  merge-upstream-another-branch:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: another-branch       # set the branch to merge to
-          fetch-depth: 0 
-      - name: Merge Upstream
-        uses: exions/merge-upstream@v1
-        with:
-          upstream: nmap/nmap              # set the upstream repo
-          upstream-branch: master   # set the upstream branch to merge from
-          branch: master            # set the branch to merge to
